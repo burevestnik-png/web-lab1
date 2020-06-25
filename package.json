@@ -1,0 +1,16 @@
+{
+  "name": "web_lab1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "git": "https://github.com/burevestnik-png/burevestnik-png.github.io",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "jquery": "*",
+    "normalize.css": "*"
+  },
+  "author": "Yarki",
+  "license": "ISC"
+}

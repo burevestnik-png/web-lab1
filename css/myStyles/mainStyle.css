@@ -1,0 +1,34 @@
+.user-input-section {
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto auto;
+}
+
+.main-svg-picture {
+    margin-right: 40px;
+}
+
+.y-value-group,
+.r-value-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.x-value-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.user-input-section .button-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.x-value-group .x-button-group .active {
+    background-color: #60d0a6;
+}

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="css/libs/normalize.css" rel="stylesheet">
+    <link href="css/myStyles/headerStyle.css" rel="stylesheet">
+    <link href="css/myStyles/mainStyle.css" rel="stylesheet">
+    <title>Yarki Project</title>
+</head>
+
+<body>
+<header class="header">
+    <div class="logo">
+        <img alt="Logo picture" class="logo-image" src="resources/images/logo.png">
+    </div>
+</header>
+
+<main class="main">
+    <section class="user-input-section">
+        <div class="main-svg-picture">
+            <svg width="300" height="300" class="svg-graph" xmlns="http://www.w3.org/2000/svg">
+
+                <!-- Оси со стрелками   -->
+                <line class="axis" x1="0" x2="300" y1="150" y2="150" stroke="black"/>
+                <line class="axis" x1="150" x2="150" y1="0" y2="300" stroke="black"/>
+                <polygon points="150,0 144,15 156,15" stroke="black"/>
+                <polygon points="300,150 285,156 285,144" stroke="black"/>
+
+                <!-- Засечки    -->
+                <line class="coor-line" x1="200" x2="200" y1="155" y2="145" stroke="black"/>
+                <line class="coor-line" x1="250" x2="250" y1="155" y2="145" stroke="black"/>
+
+                <line class="coor-line" x1="50" x2="50" y1="155" y2="145" stroke="black"/>
+                <line class="coor-line" x1="100" x2="100" y1="155" y2="145" stroke="black"/>
+
+                <line class="coor-line" x1="145" x2="155" y1="100" y2="100" stroke="black"/>
+                <line class="coor-line" x1="145" x2="155" y1="50" y2="50" stroke="black"/>
+
+                <line class="coor-line" x1="145" x2="155" y1="200" y2="200" stroke="black"/>
+                <line class="coor-line" x1="145" x2="155" y1="250" y2="250" stroke="black"/>
+
+                <!-- Подписи к засечкам    -->
+                <text class="coor-text" x="195" y="140">R/2</text>
+                <text class="coor-text" x="248" y="140">R</text>
+
+                <text class="coor-text" x="40" y="140">-R</text>
+                <text class="coor-text" x="90" y="140">-R/2</text>
+
+                <text class="coor-text" x="160" y="105">R/2</text>
+                <text class="coor-text" x="160" y="55">R</text>
+
+                <text class="coor-text" x="160" y="205">-R/2</text>
+                <text class="coor-text" x="160" y="255">-R</text>
+
+                <!-- first figure-->
+                <polygon class="svg-figure rectangle-figure"
+                         points="150,100 150,150 250,150 250,100"
+                         stroke="blue"
+                         fill-opacity="0.3"
+                         fill="blue"/>
+
+                <!-- second figure circle-->
+                <path class="svg-figure circle-figure"
+                      d="M 150 100 A 50 50, 90, 0, 0, 100 150 L 150 150 Z"
+                      fill="green"
+                      fill-opacity="0.3"
+                      stroke="green"/>
+
+                <!-- third figure-->
+                <polygon class="svg-figure triangle-figure"
+                         points="100,150 150,250 150,150"
+                         fill="yellow"
+                         fill-opacity="0.3"
+                         stroke="yellow"/>
+
+                <circle r="0" cx="150" cy="150" id="target-dot"/>
+            </svg>
+        </div>
+
+        <div class="user-input">
+            <form class="data-form">
+
+                <div class="y-value-group">
+                    <label for="y-value">Y value</label>
+                    <input type="text" id="y-value" class="y-value-input">
+                </div>
+
+                <div class="r-value-group">
+                    <label for="r-value">R value</label>
+                    <input type="text" id="r-value" class="r-value-input">
+                </div>
+
+                <div class="x-value-group">
+                    <span class="x-value-text">X value</span>
+
+                    <div class="x-button-group">
+                        <button type="button" id="x-value-1" class="x-button">-4</button>
+                        <button type="button" id="x-value-2" class="x-button">-3</button>
+                        <button type="button" class="x-button">-2</button>
+                    </div>
+
+                    <div class="x-button-group">
+                        <button type="button" class="x-button">-1</button>
+                        <button type="button" class="x-button test">0</button>
+                        <button type="button" class="x-button">1</button>
+                    </div>
+
+                    <div class="x-button-group">
+                        <button type="button" class="x-button">2</button>
+                        <button type="button" class="x-button">3</button>
+                        <button type="button" class="x-button">4</button>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="submit-button" type="submit">Submit</button>
+                    <button class="reset-button" type="reset">Reset</button>
+                </div>
+
+                <div class="error-group">
+                    <label class="error-text"></label>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="lab-info">
+
+    </div>
+</footer>
+
+<script src="js/libs/jquery-3.5.1.min.js"></script>
+<script src="js/src/DataFormer.js"></script>
+
+</body>
+</html>
