@@ -51,6 +51,11 @@ $(document).ready(function () {
     });
 
     $(".submit-button").click(function () {
-        console.log(validateUserInput($('#y-value').val(), $('#r-value').val()))
+        let data = new FormData();
+        data.append('data', "sosat s clienta");
+        fetch('php/server.php', {
+            method: 'POST',
+            body: data
+        }).then(response => console.log(response));
     });
 });
