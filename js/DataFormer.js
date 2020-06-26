@@ -1,41 +1,43 @@
 let activeXButton;
+let errorLog;
 
-function submitFormAction() {
-    /*let form = document.forms[0];
-    console.log(form.elements[0])
-    console.log(form.elements[1])
-
-    let testValue = form.elements[0].value;
-    console.log(testValue);
-
-    let label = document.createElement('label');
-    let main = document.querySelector('.user-input');
-
-    if (validateUserInput(testValue)) {
-        label.textContent = "yes";
-    } else label.textContent = "false";
-
-    main.appendChild(label);*/
-}
+let NO_X_VALUE_SELECTED_TEXT = "You haven't selected x";
+let FIELDS_Y_AND_R_MUST_BE_NUMBER = "The fields Y and R must be numbers";
+let Y_VALUE_VALIDATE_ERROR = "Y value should be from -3 to 3";
+let R_VALUE_VALIDATE_ERROR = "R value should be from 1 to 4";
 
 function validateUserInput( yValue, rValue ) {
-    console.log(`Validating: x - ${yValue}, r - ${rValue}`);
+    console.log(`Validating: x = ${yValue}, r = ${rValue}`);
 
-    try {
-        Number(yValue);
-        Number(rValue);
-    } catch (e) {
+    if (isNaN(Number(yValue)) || isNaN(Number(rValue))) {
+        errorLog.text(FIELDS_Y_AND_R_MUST_BE_NUMBER);
         return false;
     }
 
     if (Number(yValue) < -3 || Number(yValue) > 3) {
+        errorLog.text(Y_VALUE_VALIDATE_ERROR);
         return false;
     }
 
-    return !(Number(rValue) < 1 || Number(rValue) > 4);
+    if (Number(rValue) < 1 || Number(rValue) > 4) {
+        errorLog.text(R_VALUE_VALIDATE_ERROR);
+        return false;
+    }
+
+    return true;
+}
+
+function getY() {
+    return $('#y-value').val() === "" ? "emptyString" : $('#y-value').val();
+}
+
+function getR() {
+    return $('#r-value').val() === "" ? "emptyString" : $('#r-value').val();
 }
 
 $(document).ready(function () {
+    errorLog = $('#error-text');
+
     $(".x-button").on('click',function () {
         if (activeXButton === undefined ? undefined : activeXButton.attr("id") === $(this).attr("id")) {
             $(this).removeClass("active");
@@ -50,12 +52,34 @@ $(document).ready(function () {
         activeXButton = $(this);
     });
 
-    $(".submit-button").click(function () {
-        let data = new FormData();
-        data.append('data', "sosat s clienta");
+    $(".submit-button").click(function (event) {
+        if (activeXButton === undefined) {
+            errorLog.text(NO_X_VALUE_SELECTED_TEXT);
+            event.preventDefault();
+            return;
+        }
+
+        let xValue = activeXButton.text();
+        let yValue = getY();
+        let rValue = getR();
+
+        console.log(`Got data: x = ${xValue}, y = ${yValue}, r = ${rValue}`);
+
+        if (!validateUserInput(yValue, rValue)) {
+            event.preventDefault();
+            return;
+        }
+
+        let request = new FormData();
+        request.append('xValue', xValue);
+        request.append('yValue', yValue);
+        request.append('rValue', rValue);
+
         fetch('php/server.php', {
             method: 'POST',
-            body: data
-        }).then(response => console.log(response));
+            body: request
+        })
+            .then(response => response.text())
+            .then(value => console.log(value));
     });
 });
