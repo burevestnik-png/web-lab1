@@ -1,4 +1,7 @@
 <?php
-$received_data = $_POST["data"];
-$received_data .= ", tak zhe sosat s servera";
+$yValue = $_POST["yValue"];
+$xValue = $_POST["xValue"];
+$rValue = $_POST["rValue"];
+
+$received_data = $yValue . ", " . $xValue . ", " . $rValue;
 echo $received_data;
