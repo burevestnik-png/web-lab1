@@ -1,5 +1,6 @@
 let activeXButton;
 let errorLog;
+let tableSelection;
 
 let NO_X_VALUE_SELECTED_TEXT = "You haven't selected x";
 let FIELDS_Y_AND_R_MUST_BE_NUMBER = "The fields Y and R must be numbers";
@@ -53,9 +54,10 @@ $(document).ready(function () {
     });
 
     $(".submit-button").click(function (event) {
+        event.preventDefault();
+
         if (activeXButton === undefined) {
             errorLog.text(NO_X_VALUE_SELECTED_TEXT);
-            event.preventDefault();
             return;
         }
 
@@ -66,7 +68,6 @@ $(document).ready(function () {
         console.log(`Got data: x = ${xValue}, y = ${yValue}, r = ${rValue}`);
 
         if (!validateUserInput(yValue, rValue)) {
-            event.preventDefault();
             return;
         }
 
@@ -80,6 +81,10 @@ $(document).ready(function () {
             body: request
         })
             .then(response => response.text())
-            .then(value => console.log(value));
+            .then(data => {
+                console.log(data);
+                $('.table-section').html(data);
+                localStorage.setItem("table", JSON.stringify(data));
+            });
     });
 });

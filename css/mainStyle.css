@@ -32,3 +32,11 @@
 .x-value-group .x-button-group .active {
     background-color: #60d0a6;
 }
+
+.table-section {
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto auto;
+}
