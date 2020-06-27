@@ -3,6 +3,11 @@ body {
     background: linear-gradient(#141e30, #243b55);
     width: 100vw;
     height: 100vh;
+    padding-bottom: 80px;
+}
+
+.main {
+    padding-bottom: 80px;
 }
 
 .user-input-section {
@@ -74,11 +79,16 @@ body {
 }
 
 .x-button-group {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .x-value-group .x-button-group .active {
     background-color: transparent;
+    border-radius: 5px;
+    border: white solid 1px;
+    box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4;
 }
 
 .x-button {
