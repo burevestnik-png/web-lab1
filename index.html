@@ -7,7 +7,7 @@
     <link href="node_modules/normalize.css/normalize.css" rel="stylesheet">
     <link href="css/headerStyle.css" rel="stylesheet">
     <link href="css/mainStyle.css" rel="stylesheet">
-<!--    <link href="css/inputAnimating.css" rel="stylesheet">-->
+    <!--    <link href="css/inputAnimating.css" rel="stylesheet">-->
     <title>Yarki Project</title>
 </head>
 
@@ -21,46 +21,46 @@
 <main class="main">
     <section class="user-input-section">
         <div class="main-svg-picture">
-            <svg width="300" height="300" class="svg-graph" xmlns="http://www.w3.org/2000/svg">
+            <svg class="svg-graph" height="300" width="300" xmlns="http://www.w3.org/2000/svg">
 
                 <!-- Оси со стрелками   -->
-                <line class="axis" x1="0" x2="300" y1="150" y2="150" stroke="white"/>
-                <line class="axis" x1="150" x2="150" y1="0" y2="300" stroke="white"/>
-                <polygon points="150,0 144,15 156,15" stroke="white" fill="white"/>
-                <polygon points="300,150 285,156 285,144" stroke="white" fill="white"/>
+                <line class="axis" stroke="white" x1="0" x2="300" y1="150" y2="150"/>
+                <line class="axis" stroke="white" x1="150" x2="150" y1="0" y2="300"/>
+                <polygon fill="white" points="150,0 144,15 156,15" stroke="white"/>
+                <polygon fill="white" points="300,150 285,156 285,144" stroke="white"/>
 
                 <!-- Засечки    -->
-                <line class="coor-line" x1="200" x2="200" y1="155" y2="145" stroke="white"/>
-                <line class="coor-line" x1="250" x2="250" y1="155" y2="145" stroke="white"/>
+                <line class="coor-line" stroke="white" x1="200" x2="200" y1="155" y2="145"/>
+                <line class="coor-line" stroke="white" x1="250" x2="250" y1="155" y2="145"/>
 
-                <line class="coor-line" x1="50" x2="50" y1="155" y2="145" stroke="white"/>
-                <line class="coor-line" x1="100" x2="100" y1="155" y2="145" stroke="white"/>
+                <line class="coor-line" stroke="white" x1="50" x2="50" y1="155" y2="145"/>
+                <line class="coor-line" stroke="white" x1="100" x2="100" y1="155" y2="145"/>
 
-                <line class="coor-line" x1="145" x2="155" y1="100" y2="100" stroke="white"/>
-                <line class="coor-line" x1="145" x2="155" y1="50" y2="50" stroke="white"/>
+                <line class="coor-line" stroke="white" x1="145" x2="155" y1="100" y2="100"/>
+                <line class="coor-line" stroke="white" x1="145" x2="155" y1="50" y2="50"/>
 
-                <line class="coor-line" x1="145" x2="155" y1="200" y2="200" stroke="white"/>
-                <line class="coor-line" x1="145" x2="155" y1="250" y2="250" stroke="white"/>
+                <line class="coor-line" stroke="white" x1="145" x2="155" y1="200" y2="200"/>
+                <line class="coor-line" stroke="white" x1="145" x2="155" y1="250" y2="250"/>
 
                 <!-- Подписи к засечкам    -->
-                <text class="coor-text" x="195" y="140" fill="white">R/2</text>
-                <text class="coor-text" x="248" y="140" fill="white">R</text>
+                <text class="coor-text" fill="white" x="195" y="140">R/2</text>
+                <text class="coor-text" fill="white" x="248" y="140">R</text>
 
-                <text class="coor-text" x="40" y="140" fill="white">-R</text>
-                <text class="coor-text" x="90" y="140" fill="white">-R/2</text>
+                <text class="coor-text" fill="white" x="40" y="140">-R</text>
+                <text class="coor-text" fill="white" x="90" y="140">-R/2</text>
 
-                <text class="coor-text" x="160" y="105" fill="white">R/2</text>
-                <text class="coor-text" x="160" y="55" fill="white">R</text>
+                <text class="coor-text" fill="white" x="160" y="105">R/2</text>
+                <text class="coor-text" fill="white" x="160" y="55">R</text>
 
-                <text class="coor-text" x="160" y="205" fill="white">-R/2</text>
-                <text class="coor-text" x="160" y="255" fill="white">-R</text>
+                <text class="coor-text" fill="white" x="160" y="205">-R/2</text>
+                <text class="coor-text" fill="white" x="160" y="255">-R</text>
 
                 <!-- first figure-->
                 <polygon class="svg-figure rectangle-figure"
-                         points="150,100 150,150 250,150 250,100"
-                         stroke="blue"
+                         fill="blue"
                          fill-opacity="0.3"
-                         fill="blue"/>
+                         points="150,100 150,150 250,150 250,100"
+                         stroke="blue"/>
 
                 <!-- second figure circle-->
                 <path class="svg-figure circle-figure"
@@ -71,12 +71,12 @@
 
                 <!-- third figure-->
                 <polygon class="svg-figure triangle-figure"
-                         points="100,150 150,250 150,150"
                          fill="yellow"
                          fill-opacity="0.3"
+                         points="100,150 150,250 150,150"
                          stroke="yellow"/>
 
-                <circle r="0" cx="150" cy="150" id="target-dot"/>
+                <circle cx="150" cy="150" id="target-dot" r="0"/>
             </svg>
         </div>
 
@@ -84,44 +84,44 @@
             <form class="data-form">
 
                 <div class="value-group y-value-group">
-                    <input type="text" id="y-value" class="value-input">
-                    <label for="y-value" class="y-value-label">Y value</label>
+                    <input class="value-input" id="y-value" type="text">
+                    <label class="y-value-label" for="y-value">Y value</label>
                 </div>
 
                 <div class="value-group r-value-group">
-                    <input type="text" id="r-value" class="value-input">
-                    <label for="r-value" class="r-value-label">R value</label>
+                    <input class="value-input" id="r-value" type="text">
+                    <label class="r-value-label" for="r-value">R value</label>
                 </div>
 
                 <div class="x-value-group">
-                    <span class="x-value-text">X value</span>
+                    <span id="x-value-text">X value</span>
 
                     <div class="x-button-group">
-                        <button type="button" id="x-value-1" class="x-button">-4</button>
-                        <button type="button" id="x-value-2" class="x-button">-3</button>
-                        <button type="button" id="x-value-3" class="x-button">-2</button>
+                        <button class="x-button" id="x-value-1" type="button">-4</button>
+                        <button class="x-button" id="x-value-2" type="button">-3</button>
+                        <button class="x-button" id="x-value-3" type="button">-2</button>
                     </div>
 
                     <div class="x-button-group">
-                        <button type="button" id="x-value-4" class="x-button">-1</button>
-                        <button type="button" id="x-value-5" class="x-button test">0</button>
-                        <button type="button" id="x-value-6" class="x-button">1</button>
+                        <button class="x-button" id="x-value-4" type="button">-1</button>
+                        <button class="x-button test" id="x-value-5" type="button">0</button>
+                        <button class="x-button" id="x-value-6" type="button">1</button>
                     </div>
 
                     <div class="x-button-group">
-                        <button type="button" id="x-value-7" class="x-button">2</button>
-                        <button type="button" id="x-value-8" class="x-button">3</button>
-                        <button type="button" id="x-value-9" class="x-button">4</button>
+                        <button class="x-button" id="x-value-7" type="button">2</button>
+                        <button class="x-button" id="x-value-8" type="button">3</button>
+                        <button class="x-button" id="x-value-9" type="button">4</button>
                     </div>
                 </div>
 
                 <div class="form-button-group">
                     <a href="#" id="submit-button">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Submit
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Submit
                     </a>
 
                     <a href="#" id="reset-button">
