@@ -91,7 +91,7 @@ $(document).ready(function () {
         }
         $('#r-value').val("");
         $('#y-value').val("");
-        
+
         $('.r-value-label').removeClass('active-input');
         $('.y-value-label').removeClass('active-input');
     });
