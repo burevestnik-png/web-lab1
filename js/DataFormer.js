@@ -53,9 +53,7 @@ $(document).ready(function () {
         activeXButton = $(this);
     });
 
-    $("#submit-button").on('click', function (event) {
-        event.preventDefault();
-
+    $("#submit-button").on('click', function () {
         if (activeXButton === undefined) {
             errorLog.text(NO_X_VALUE_SELECTED_TEXT);
             return;
@@ -84,7 +82,6 @@ $(document).ready(function () {
             .then(data => {
                 console.log(data);
                 $('.table-section').html(data);
-                localStorage.setItem("table", JSON.stringify(data));
             });
     });
 
