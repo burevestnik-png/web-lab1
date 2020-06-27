@@ -53,7 +53,7 @@ $(document).ready(function () {
         activeXButton = $(this);
     });
 
-    $(".submit-button").click(function (event) {
+    $("#submit-button").on('click', function (event) {
         event.preventDefault();
 
         if (activeXButton === undefined) {
@@ -86,5 +86,27 @@ $(document).ready(function () {
                 $('.table-section').html(data);
                 localStorage.setItem("table", JSON.stringify(data));
             });
+    });
+
+    $('.r-value-group').on('focusin', function () {
+        $(this).find('.r-value-label').addClass('active-input');
+    });
+
+
+    $('.r-value-group').on('focusout', function () {
+        if (!$('#r-value').val()) {
+            $(this).find('.r-value-label').removeClass('active-input');
+        }
+    });
+
+    $('.y-value-group').on('focusin', function () {
+        $(this).find('.y-value-label').addClass('active-input');
+    });
+
+
+    $('.y-value-group').on('focusout', function () {
+        if (!$('#y-value').val()) {
+            $(this).find('.y-value-label').removeClass('active-input');
+        }
     });
 });
