@@ -85,6 +85,17 @@ $(document).ready(function () {
             });
     });
 
+    $('#reset-button').on('click', () => {
+        if (activeXButton !== undefined) {
+            activeXButton.removeClass("active");
+        }
+        $('#r-value').val("");
+        $('#y-value').val("");
+        
+        $('.r-value-label').removeClass('active-input');
+        $('.y-value-label').removeClass('active-input');
+    });
+
     $('.r-value-group').on('focusin', function () {
         $(this).find('.r-value-label').addClass('active-input');
     });
