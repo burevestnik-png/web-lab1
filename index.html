@@ -84,12 +84,12 @@
             <form class="data-form">
 
                 <div class="value-group y-value-group">
-                    <input class="value-input" id="y-value" type="text">
+                    <input class="value-input" id="y-value" type="text" autocomplete="off">
                     <label class="y-value-label" for="y-value">Y value</label>
                 </div>
 
                 <div class="value-group r-value-group">
-                    <input class="value-input" id="r-value" type="text">
+                    <input class="value-input" id="r-value" type="text" autocomplete="off">
                     <label class="r-value-label" for="r-value">R value</label>
                 </div>
 
@@ -141,16 +141,42 @@
     </section>
 
     <section class="table-section">
-        <table id="dataTable">
-            <tr>
-                <th>X</th>
-                <th>Y</th>
-                <th>R</th>
-                <th>Current time</th>
-                <th>Execution time</th>
-                <th>Hit result</th>
-            </tr>
-        </table>
+        <div class="table">
+            <div class="table-header">
+                <div class="header__item"><a id="name" class="filter__link" href="#">X</a></div>
+                <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Y</a></div>
+                <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">R</a></div>
+                <div class="header__item"><a id="losses" class="filter__link filter__link--number" href="#">Current time</a></div>
+                <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Execution time</a></div>
+                <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Hit result</a></div>
+            </div>
+            <div class="table-content">
+                <div class="table-row">
+                    <div class="table-data">Tom</div>
+                    <div class="table-data">2</div>
+                    <div class="table-data">2</div>
+                    <div class="table-data">0</div>
+                    <div class="table-data">1</div>
+                    <div class="table-data">5</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-data">Dick</div>
+                    <div class="table-data">1</div>
+                    <div class="table-data">1</div>
+                    <div class="table-data">1</div>
+                    <div class="table-data">2</div>
+                    <div class="table-data">3</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-data">Harry</div>
+                    <div class="table-data">0</div>
+                    <div class="table-data">2</div>
+                    <div class="table-data">2</div>
+                    <div class="table-data">2</div>
+                    <div class="table-data">2</div>
+                </div>
+            </div>
+        </div>
     </section>
 </main>
 

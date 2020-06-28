@@ -1,6 +1,8 @@
 let activeXButton;
 let errorLog;
-let tableSelection;
+let tableProperties = [
+
+]
 
 let NO_X_VALUE_SELECTED_TEXT = "You haven't selected x";
 let FIELDS_Y_AND_R_MUST_BE_NUMBER = "The fields Y and R must be numbers";
