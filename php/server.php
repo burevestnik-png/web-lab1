@@ -60,25 +60,27 @@ if (!isset($_SESSION['dataHistory'])) {
 
 array_push($_SESSION['dataHistory'], $receivedData);
 
-echo "<table id=\"dataTable\">
-            <tr>
-                <th>X</th>
-                <th>Y</th>
-                <th>R</th>
-                <th>Current time</th>
-                <th>Execution time</th>
-                <th>Hit result</th>
-            </tr>";
+echo "<div class=\"table\">
+            <div class=\"table-header\">
+                <div class=\"header__item\"><a id=\"x-value-head\" class=\"filter__link\" href=\"#\">X</a></div>
+                <div class=\"header__item\"><a id=\"y-value-head\" class=\"filter__link filter__link--number\" href=\"#\">Y</a></div>
+                <div class=\"header__item\"><a id=\"r-value-head\" class=\"filter__link filter__link--number\" href=\"#\">R</a></div>
+                <div class=\"header__item\"><a id=\"current-time-head\" class=\"filter__link filter__link--number\" href=\"#\">Current time</a></div>
+                <div class=\"header__item\"><a id=\"execution-time-head\" class=\"filter__link filter__link--number\" href=\"#\">Execution time</a></div>
+                <div class=\"header__item\"><a id=\"hit-result-head\" class=\"filter__link filter__link--number\" href=\"#\">Hit result</a></div>
+            </div>
+            <div class=\"table-content\">";
 
 foreach ($_SESSION['dataHistory'] as $value) {
-    echo "<tr>
-                <td>$value[0]</td>
-                <td>$value[1]</td>
-                <td>$value[2]</td>
-                <td>$value[3]</td>
-                <td>$value[4]</td>
-                <td>$value[5]</td>
-         </tr>";
+    echo "<div class=\"table-row\">
+                    <div class=\"table-data\">$value[0]</div>
+                    <div class=\"table-data\">$value[1]</div>
+                    <div class=\"table-data\">$value[2]</div>
+                    <div class=\"table-data\">$value[3]</div>
+                    <div class=\"table-data\">$value[4]</div>
+                    <div class=\"table-data\">$value[5]</div>
+                </div>";
 }
 
-echo "</table>";
+echo "</div>
+        </div>";
