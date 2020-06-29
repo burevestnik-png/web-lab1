@@ -1,4 +1,9 @@
 body {
+    /* Made site unselectable */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
     font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
     min-height: 90vh;
@@ -228,6 +233,17 @@ body {
     }
 }
 
+.error-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto auto;
+}
+
+#error-text {
+    color: red;
+}
+
 .table-section {
     max-width: 80%;
     display: flex;
@@ -244,6 +260,8 @@ body {
 
 .table-header {
     display: flex;
+    justify-content: center;
+    vertical-align: center;
     width: 100%;
     background: #070b10;
     padding: 18px 0;
