@@ -1,8 +1,9 @@
 let activeXButton;
 let errorLog;
 let dotTarget;
-let currentRValue = 0;
-let currentYValue = 0;
+let currentRValue;
+let currentYValue;
+let relativeUnit = 0;
 
 let tableProperties = [
     "x-value-head",
@@ -78,6 +79,14 @@ function checkDouble( value ) {
     }
 }
 
+function calculateX(xValue) {
+    return 150 + relativeUnit * xValue;
+}
+
+function calculateY(yValue) {
+    return 150 - relativeUnit * yValue;
+}
+
 $(document).ready(function () {
     errorLog = $('#error-text');
     dotTarget = $('#target-dot');
@@ -94,11 +103,31 @@ $(document).ready(function () {
         $(this).addClass("active");
 
         activeXButton = $(this);
+
+        if (currentRValue === undefined || currentYValue === undefined) {
+            return;
+        }
+
+        relativeUnit = 100 / currentRValue;
+
+        dotTarget.attr("r", 3);
+        dotTarget.attr("cy", calculateY(currentYValue));
+        dotTarget.attr("cx", calculateX(activeXButton.text()));
     });
 
     $('#r-value').change(function () {
         validateRValue(getR());
         currentRValue = getR();
+
+        if (activeXButton === undefined || currentYValue === undefined) {
+            return;
+        }
+
+        relativeUnit = 100 / currentRValue;
+
+        dotTarget.attr("r", 3);
+        dotTarget.attr("cy", calculateY(currentYValue));
+        dotTarget.attr("cx", calculateX(activeXButton.text()));
     });
 
     $('#y-value').change(function () {
@@ -109,7 +138,11 @@ $(document).ready(function () {
             return;
         }
 
+        relativeUnit = 100 / currentRValue;
 
+        dotTarget.attr("r", 3);
+        dotTarget.attr("cy", calculateY(currentYValue));
+        dotTarget.attr("cx", calculateX(activeXButton.text()));
     });
 
     $("#submit-button").on('click', function () {
@@ -155,6 +188,8 @@ $(document).ready(function () {
 
         $('.r-value-label').removeClass('active-input');
         $('.y-value-label').removeClass('active-input');
+
+        dotTarget.attr("r", 0);
     });
 
     $('.r-value-group').on('focusin', function () {
