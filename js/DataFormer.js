@@ -116,7 +116,12 @@ $(document).ready(function () {
     });
 
     $('#r-value').change(function () {
-        validateRValue(getR());
+        errorLog.text("");
+
+        if (!validateRValue(getR())) {
+            return;
+        }
+
         currentRValue = getR();
 
         if (activeXButton === undefined || currentYValue === undefined) {
@@ -131,7 +136,12 @@ $(document).ready(function () {
     });
 
     $('#y-value').change(function () {
-        validateYValue(getY());
+        errorLog.text("");
+
+        if (!validateYValue(getY())) {
+            return;
+        }
+
         currentYValue = getY();
 
         if (activeXButton === undefined || currentRValue === 0) {
