@@ -1,5 +1,9 @@
 let activeXButton;
 let errorLog;
+let dotTarget;
+let currentRValue = 0;
+let currentYValue = 0;
+
 let tableProperties = [
     "x-value-head",
     "y-value-head",
@@ -14,16 +18,27 @@ let FIELDS_Y_AND_R_MUST_BE_NUMBER = "The fields Y and R must be numbers";
 let Y_VALUE_VALIDATE_ERROR = "Y value should be from -3 to 3";
 let R_VALUE_VALIDATE_ERROR = "R value should be from 1 to 4";
 
-function validateUserInput( yValue, rValue ) {
-    console.log(`Validating: x = ${yValue}, r = ${rValue}`);
+function validateYValue(yValue) {
+    console.log(`Validating: y = ${yValue}`);
 
-    if (isNaN(Number(yValue)) || isNaN(Number(rValue))) {
+    if (isNaN(Number(yValue))) {
         errorLog.text(FIELDS_Y_AND_R_MUST_BE_NUMBER);
         return false;
     }
 
     if (Number(yValue) < -3 || Number(yValue) > 3) {
         errorLog.text(Y_VALUE_VALIDATE_ERROR);
+        return false;
+    }
+
+    return true;
+}
+
+function validateRValue(rValue) {
+    console.log(`Validating: r = ${rValue}`);
+
+    if (isNaN(Number(rValue))) {
+        errorLog.text(FIELDS_Y_AND_R_MUST_BE_NUMBER);
         return false;
     }
 
@@ -36,15 +51,36 @@ function validateUserInput( yValue, rValue ) {
 }
 
 function getY() {
-    return $('#y-value').val() === "" ? "emptyString" : $('#y-value').val();
+    let yValue = $('#y-value').val();
+
+    if (yValue === "") {
+        yValue = "emptyString";
+    }
+
+    return checkDouble(yValue);
 }
 
 function getR() {
-    return $('#r-value').val() === "" ? "emptyString" : $('#r-value').val();
+    let rValue = $('#r-value').val();
+
+    if (rValue === "") {
+        rValue = "emptyString";
+    }
+
+    return checkDouble(rValue);
+}
+
+function checkDouble( value ) {
+    if (value.toString().includes(",")) {
+        return value.replace(",", ".");
+    } else {
+        return value;
+    }
 }
 
 $(document).ready(function () {
     errorLog = $('#error-text');
+    dotTarget = $('#target-dot');
 
     $(".x-button").on('click',function () {
         if (activeXButton === undefined ? undefined : activeXButton.attr("id") === $(this).attr("id")) {
@@ -60,6 +96,22 @@ $(document).ready(function () {
         activeXButton = $(this);
     });
 
+    $('#r-value').change(function () {
+        validateRValue(getR());
+        currentRValue = getR();
+    });
+
+    $('#y-value').change(function () {
+        validateYValue(getY());
+        currentYValue = getY();
+
+        if (activeXButton === undefined || currentRValue === 0) {
+            return;
+        }
+
+
+    });
+
     $("#submit-button").on('click', function () {
         errorLog.text("");
 
@@ -69,12 +121,12 @@ $(document).ready(function () {
         }
 
         let xValue = activeXButton.text();
-        let yValue = getY();
-        let rValue = getR();
+        let yValue = checkDouble(getY());
+        let rValue = checkDouble(getR());
 
         console.log(`Got data: x = ${xValue}, y = ${yValue}, r = ${rValue}`);
 
-        if (!validateUserInput(yValue, rValue)) {
+        if (!validateRValue(rValue) || !validateYValue(yValue)) {
             return;
         }
 
