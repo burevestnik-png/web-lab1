@@ -200,6 +200,9 @@ $(document).ready(function () {
         $('.y-value-label').removeClass('active-input');
 
         dotTarget.attr("r", 0);
+        currentYValue = undefined;
+        currentRValue = undefined;
+        activeXButton = undefined;
     });
 
     $('.r-value-group').on('focusin', function () {
