@@ -7,7 +7,6 @@
     <link href="node_modules/normalize.css/normalize.css" rel="stylesheet">
     <link href="css/headerStyle.css" rel="stylesheet">
     <link href="css/mainStyle.css" rel="stylesheet">
-    <!--    <link href="css/inputAnimating.css" rel="stylesheet">-->
     <title>Yarki Project</title>
 </head>
 
@@ -18,10 +17,10 @@
     </div>
     <div class="lab-info">
         <span class="author-and-group">
-            Yaroslav Kulinich, P3113
+            Yaroslav Kulinich, P3213
         </span>
         <span class="option">
-            Option 1000
+            Variant 2411
         </span>
     </div>
 </header>
@@ -29,60 +28,58 @@
 <main class="main">
     <section class="user-input-section">
         <div class="main-svg-picture">
-            <svg class="svg-graph" height="300" width="300" xmlns="http://www.w3.org/2000/svg">
+            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg">
 
                 <!-- Оси со стрелками   -->
-                <line class="axis" stroke="white" x1="0" x2="300" y1="150" y2="150"/>
-                <line class="axis" stroke="white" x1="150" x2="150" y1="0" y2="300"/>
+                <line stroke="white" x1="0" x2="300" y1="150" y2="150"/>
+                <line stroke="white" x1="150" x2="150" y1="0" y2="300"/>
                 <polygon fill="white" points="150,0 144,15 156,15" stroke="white"/>
                 <polygon fill="white" points="300,150 285,156 285,144" stroke="white"/>
 
                 <!-- Засечки    -->
-                <line class="coor-line" stroke="white" x1="200" x2="200" y1="155" y2="145"/>
-                <line class="coor-line" stroke="white" x1="250" x2="250" y1="155" y2="145"/>
+                <line stroke="white" x1="200" x2="200" y1="155" y2="145"/>
+                <line stroke="white" x1="250" x2="250" y1="155" y2="145"/>
 
-                <line class="coor-line" stroke="white" x1="50" x2="50" y1="155" y2="145"/>
-                <line class="coor-line" stroke="white" x1="100" x2="100" y1="155" y2="145"/>
+                <line stroke="white" x1="50" x2="50" y1="155" y2="145"/>
+                <line stroke="white" x1="100" x2="100" y1="155" y2="145"/>
 
-                <line class="coor-line" stroke="white" x1="145" x2="155" y1="100" y2="100"/>
-                <line class="coor-line" stroke="white" x1="145" x2="155" y1="50" y2="50"/>
+                <line stroke="white" x1="145" x2="155" y1="100" y2="100"/>
+                <line stroke="white" x1="145" x2="155" y1="50" y2="50"/>
 
-                <line class="coor-line" stroke="white" x1="145" x2="155" y1="200" y2="200"/>
-                <line class="coor-line" stroke="white" x1="145" x2="155" y1="250" y2="250"/>
+                <line stroke="white" x1="145" x2="155" y1="200" y2="200"/>
+                <line stroke="white" x1="145" x2="155" y1="250" y2="250"/>
 
                 <!-- Подписи к засечкам    -->
-                <text class="coor-text" fill="white" x="195" y="140">R/2</text>
-                <text class="coor-text" fill="white" x="248" y="140">R</text>
+                <text fill="white" x="195" y="140">R/2</text>
+                <text fill="white" x="248" y="140">R</text>
 
-                <text class="coor-text" fill="white" x="40" y="140">-R</text>
-                <text class="coor-text" fill="white" x="90" y="140">-R/2</text>
+                <text fill="white" x="40" y="140">-R</text>
+                <text fill="white" x="90" y="140">-R/2</text>
 
-                <text class="coor-text" fill="white" x="160" y="105">R/2</text>
-                <text class="coor-text" fill="white" x="160" y="55">R</text>
+                <text fill="white" x="160" y="105">R/2</text>
+                <text fill="white" x="160" y="55">R</text>
 
-                <text class="coor-text" fill="white" x="160" y="205">-R/2</text>
-                <text class="coor-text" fill="white" x="160" y="255">-R</text>
+                <text fill="white" x="160" y="205">-R/2</text>
+                <text fill="white" x="160" y="255">-R</text>
 
-                <!-- first figure-->
-                <polygon class="svg-figure rectangle-figure"
-                         fill="blue"
+                <!-- first figure triangle -->
+                <polygon fill="blue"
                          fill-opacity="0.3"
-                         points="150,100 150,150 250,150 250,100"
+                         points="150,50 150,150 250,150"
                          stroke="blue"/>
 
-                <!-- second figure circle-->
-                <path class="svg-figure circle-figure"
-                      d="M 150 100 A 50 50, 90, 0, 0, 100 150 L 150 150 Z"
+                <!-- second figure rectangle-->
+                <polygon fill="yellow"
+                         fill-opacity="0.3"
+                         points="100,150 100,50 150,50 150,150"
+                         stroke="yellow"/>
+
+                <!-- third figure circle-->
+                <path d="M 100 150 A 50 50, 90, 0, 0, 150 200 L 150 150 Z"
                       fill="green"
                       fill-opacity="0.3"
                       stroke="green"/>
 
-                <!-- third figure-->
-                <polygon class="svg-figure triangle-figure"
-                         fill="yellow"
-                         fill-opacity="0.3"
-                         points="100,150 150,250 150,150"
-                         stroke="yellow"/>
 
                 <circle cx="150" cy="150" id="target-dot" r="0" stroke="white" fill="white"/>
             </svg>
