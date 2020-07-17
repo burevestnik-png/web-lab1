@@ -62,23 +62,23 @@ array_push($_SESSION['dataHistory'], $receivedData);
 
 echo "<div class=\"table\">
             <div class=\"table-header\">
-                <div class=\"header__item\"><a id=\"x-value-head\" class=\"filter__link\" href=\"#\">X</a></div>
-                <div class=\"header__item\"><a id=\"y-value-head\" class=\"filter__link filter__link--number\" href=\"#\">Y</a></div>
-                <div class=\"header__item\"><a id=\"r-value-head\" class=\"filter__link filter__link--number\" href=\"#\">R</a></div>
-                <div class=\"header__item\"><a id=\"current-time-head\" class=\"filter__link filter__link--number\" href=\"#\">Current time</a></div>
-                <div class=\"header__item\"><a id=\"execution-time-head\" class=\"filter__link filter__link--number\" href=\"#\">Execution time</a></div>
-                <div class=\"header__item\"><a id=\"hit-result-head\" class=\"filter__link filter__link--number\" href=\"#\">Hit result</a></div>
+                <span>X</span>
+                <span>Y</span>
+                <span>Z</span>
+                <span>Current time</span>
+                <span>Execution time</span>
+                <span>Hit result</span>
             </div>
             <div class=\"table-content\">";
 
 foreach ($_SESSION['dataHistory'] as $value) {
     echo "<div class=\"table-row\">
-                    <div class=\"table-data\">$value[0]</div>
-                    <div class=\"table-data\">$value[1]</div>
-                    <div class=\"table-data\">$value[2]</div>
-                    <div class=\"table-data\">$value[3]</div>
-                    <div class=\"table-data\">$value[4]</div>
-                    <div class=\"table-data\">$value[5]</div>
+                    <span>$value[0]</span>
+                    <span>$value[1]</span>
+                    <span>$value[2]</span>
+                    <span>$value[3]</span>
+                    <span>$value[4]</span>
+                    <span>$value[5]</span>
                 </div>";
 }
 

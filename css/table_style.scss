@@ -1,0 +1,40 @@
+$border-color: #EEEEEE;
+$table-header-background: #070b10;
+$table-row-background: #121c29;
+
+.table-section {
+  max-width: 80%;
+  margin: 20px auto auto;
+
+  // дочерний селектор
+  > div {
+    margin-top: 10px;
+    width: 100%;
+    border: 1px solid $border-color;
+  }
+
+  .table-header {
+    display: flex;
+    background-color: $table-header-background;
+    padding: 20px 0;
+
+    span {
+      text-transform: uppercase;
+    }
+  }
+
+  .table-row {
+    @extend .table-header;
+    background-color: transparent;
+
+    &:nth-of-type(odd) {
+      background-color: $table-row-background;
+    }
+  }
+
+  span {
+    flex: 1 1 20%;
+    text-align: center;
+    color: white;
+  }
+}

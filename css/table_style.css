@@ -1,0 +1,30 @@
+.table-section {
+  max-width: 80%;
+  margin: 20px auto auto;
+}
+.table-section > div {
+  margin-top: 10px;
+  width: 100%;
+  border: 1px solid #EEEEEE;
+}
+.table-section .table-header, .table-section .table-row {
+  display: flex;
+  background-color: #070b10;
+  padding: 20px 0;
+}
+.table-section .table-header span, .table-section .table-row span {
+  text-transform: uppercase;
+}
+.table-section .table-row {
+  background-color: transparent;
+}
+.table-section .table-row:nth-of-type(odd) {
+  background-color: #121c29;
+}
+.table-section span {
+  flex: 1 1 20%;
+  text-align: center;
+  color: white;
+}
+
+/*# sourceMappingURL=table_style.css.map */
