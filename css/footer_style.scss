@@ -1,0 +1,17 @@
+@import "header_style.scss";
+
+.footer {
+  position: fixed;
+  background-color: $main-color;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    color: white;
+    font-style: italic;
+  }
+}

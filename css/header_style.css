@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap");
+* {
+  font-family: "Baloo Da 2", cursive;
+}
+
+.header {
+  background-color: #121c29;
+  display: flex;
+  justify-content: space-between;
+}
+.header img {
+  width: 80px;
+  margin-left: 10px;
+}
+.header div {
+  display: flex;
+  flex-direction: column;
+  margin: auto 20px auto;
+  align-items: center;
+}
+.header div span {
+  color: white;
+  font-style: italic;
+  font-size: 20px;
+}
+.header div span:first-child {
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=header_style.css.map */

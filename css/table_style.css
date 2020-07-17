@@ -12,7 +12,7 @@
   background-color: #070b10;
   padding: 20px 0;
 }
-.table-section .table-header span, .table-section .table-row span {
+.table-section .table-header > span, .table-section .table-row > span {
   text-transform: uppercase;
 }
 .table-section .table-row {

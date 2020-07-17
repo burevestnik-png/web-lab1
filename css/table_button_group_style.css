@@ -1,0 +1,12 @@
+.table-buttons {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 30%;
+  margin: 40px auto auto;
+  height: 50px;
+  border-radius: 10px;
+}
+
+/*# sourceMappingURL=table_button_group_style.css.map */

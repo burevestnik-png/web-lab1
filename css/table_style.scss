@@ -18,7 +18,7 @@ $table-row-background: #121c29;
     background-color: $table-header-background;
     padding: 20px 0;
 
-    span {
+    > span {
       text-transform: uppercase;
     }
   }
