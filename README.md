@@ -1,4 +1,4 @@
-# Main page 
+# Web lab 1 
 
 > This is first lab in discipline WEB-programming
 
