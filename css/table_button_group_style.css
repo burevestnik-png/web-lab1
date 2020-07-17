@@ -1,8 +1,11 @@
 .table-buttons {
-  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.table-buttons {
+  background-color: rgba(0, 0, 0, 0.5);
   max-width: 30%;
   margin: 40px auto auto;
   height: 50px;
