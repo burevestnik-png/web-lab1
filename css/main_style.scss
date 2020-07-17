@@ -15,4 +15,26 @@ body {
   svg {
     margin-right: 40px;
   }
+
+  form {
+    input[type=radio] {
+      display: none;
+
+      &:checked + label {
+        background-color: white;
+      }
+    }
+
+    .form_radio_button {
+      > label {
+        display: inline-block;
+        cursor: pointer;
+        padding: 0 15px;
+        line-height: 34px;
+        border: 1px solid white;
+        border-radius: 6px;
+        user-select: none;
+      }
+    }
+  }
 }
