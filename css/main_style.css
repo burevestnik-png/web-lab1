@@ -34,6 +34,16 @@ body {
 .user-input-section .data-form .y-value-group {
   position: relative;
 }
+.user-input-section .data-form .y-value-group input {
+  width: 100%;
+  padding: 10px 0;
+  color: white;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+}
 .user-input-section .data-form .radio-wrapper {
   display: flex;
 }
@@ -62,13 +72,13 @@ body {
   box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4;
 }
 .user-input-section .data-form .form_radio_button {
-  width: 50px;
+  width: 40px;
 }
 .user-input-section .data-form .form_radio_button > label {
   display: block;
   cursor: pointer;
   color: #03e9f4;
-  width: 40px;
+  width: 100%;
   border: 1px solid #03e9f4;
   border-radius: 6px;
   transition: 0.5s;
@@ -79,6 +89,24 @@ body {
   color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+}
+
+.y-value-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.active-input {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
 }
 
 /*# sourceMappingURL=main_style.css.map */
