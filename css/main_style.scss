@@ -16,24 +16,84 @@ body {
     margin-right: 40px;
   }
 
-  form {
+  > div {
+    background-color: $form-background-color;
+    padding: 40px;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+
+  .data-form {
+    .y-value-group {
+      position: relative;
+    }
+
+    .radio-wrapper {
+      display: flex;
+
+      div:first-child {
+        margin-right: 20px;
+      }
+    }
+
+    .x-value-group,
+    .r-value-group {
+      span {
+        @extend %italic-white-text;
+        font-size: 16px;
+      }
+
+      > div {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(3, 50px);
+        grid-column-gap: 5px;
+        grid-row-gap: 10px;
+      }
+    }
+
     input[type=radio] {
       display: none;
 
       &:checked + label {
-        background-color: white;
+        background-color: transparent;
+        color: white;
+        border: white solid 1px;
+        box-shadow: 0 0 5px $neon-color,
+                    0 0 25px $neon-color,
+                    0 0 50px $neon-color;
       }
     }
 
     .form_radio_button {
+      width: 50px;
+
       > label {
-        display: inline-block;
+        display: block;
+
         cursor: pointer;
-        padding: 0 15px;
-        line-height: 34px;
-        border: 1px solid white;
+        color: $neon-color;
+
+        //padding: 0 ;
+        width: 40px;
+
+        border: 1px solid $neon-color;
         border-radius: 6px;
-        user-select: none;
+
+        transition: .5s;
+
+        text-align: center;
+
+        &:hover {
+          background: $neon-color;
+          color: #fff;
+          border-radius: 5px;
+          box-shadow: 0 0 5px $neon-color,
+                      0 0 25px $neon-color,
+                      0 0 50px $neon-color,
+                      0 0 100px $neon-color;
+        }
       }
     }
   }

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap');
+@import "utility_styles";
 
 $main-color: #121c29;
 
@@ -28,9 +29,7 @@ $main-color: #121c29;
     align-items: center;
 
     span {
-      color: white;
-      font-style: italic;
-      font-size: 20px;
+      @extend %italic-white-text;
 
       &:first-child {
         margin-bottom: 10px;

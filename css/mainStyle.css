@@ -1,12 +1,3 @@
-.user-input {
-    padding: 40px;
-    width: 400px;
-    background: rgba(0,0,0,.5);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    border-radius: 10px;
-}
-
 .user-input .value-group {
     position: relative;
 }
@@ -45,50 +36,6 @@
 #x-value-text {
     color: #fff;
     margin-bottom: 10px;
-}
-
-.x-value-group {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.x-button-group {
-    margin-bottom: 10px;
-}
-
-.x-value-group .x-button-group .active {
-    background-color: transparent;
-    border-radius: 5px;
-    border: white solid 1px;
-    box-shadow: 0 0 5px #03e9f4,
-    0 0 25px #03e9f4,
-    0 0 50px #03e9f4;
-}
-
-.x-button {
-    position: relative;
-    display: inline-block;
-    color: #03e9f4;
-    background-color: transparent;
-    border: none;
-    transition: .5s;
-    letter-spacing: 4px;
-    width: 50px;
-    margin-right: 5px;
-    text-align: center;
-    cursor: pointer;
-}
-
-.x-button:hover {
-    background: #03e9f4;
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #03e9f4,
-    0 0 25px #03e9f4,
-    0 0 50px #03e9f4,
-    0 0 100px #03e9f4;
 }
 
 .form-button-group {

@@ -4,6 +4,13 @@
   align-items: center;
 }
 
+.user-input-section .data-form .x-value-group span,
+.user-input-section .data-form .r-value-group span {
+  color: white;
+  font-style: italic;
+  font-size: 20px;
+}
+
 body {
   background: linear-gradient(#141e30, #243b55);
   min-height: 90vh;
@@ -17,20 +24,61 @@ body {
 .user-input-section svg {
   margin-right: 40px;
 }
-.user-input-section form input[type=radio] {
+.user-input-section > div {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.user-input-section .data-form .y-value-group {
+  position: relative;
+}
+.user-input-section .data-form .radio-wrapper {
+  display: flex;
+}
+.user-input-section .data-form .radio-wrapper div:first-child {
+  margin-right: 20px;
+}
+.user-input-section .data-form .x-value-group span,
+.user-input-section .data-form .r-value-group span {
+  font-size: 16px;
+}
+.user-input-section .data-form .x-value-group > div,
+.user-input-section .data-form .r-value-group > div {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 50px);
+  grid-column-gap: 5px;
+  grid-row-gap: 10px;
+}
+.user-input-section .data-form input[type=radio] {
   display: none;
 }
-.user-input-section form input[type=radio]:checked + label {
-  background-color: white;
+.user-input-section .data-form input[type=radio]:checked + label {
+  background-color: transparent;
+  color: white;
+  border: white solid 1px;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4;
 }
-.user-input-section form .form_radio_button > label {
-  display: inline-block;
+.user-input-section .data-form .form_radio_button {
+  width: 50px;
+}
+.user-input-section .data-form .form_radio_button > label {
+  display: block;
   cursor: pointer;
-  padding: 0 15px;
-  line-height: 34px;
-  border: 1px solid white;
+  color: #03e9f4;
+  width: 40px;
+  border: 1px solid #03e9f4;
   border-radius: 6px;
-  user-select: none;
+  transition: 0.5s;
+  text-align: center;
+}
+.user-input-section .data-form .form_radio_button > label:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
 }
 
 /*# sourceMappingURL=main_style.css.map */

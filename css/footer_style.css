@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap");
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer span, .header div span {
+  color: white;
+  font-style: italic;
+  font-size: 20px;
+}
+
 * {
   font-family: "Baloo Da 2", cursive;
   /* Made site unselectable */
@@ -27,11 +39,6 @@
   margin: auto 20px auto;
   align-items: center;
 }
-.header div span {
-  color: white;
-  font-style: italic;
-  font-size: 20px;
-}
 .header div span:first-child {
   margin-bottom: 10px;
 }
@@ -42,16 +49,18 @@
   align-items: center;
 }
 
+.footer span, .header div span {
+  color: white;
+  font-style: italic;
+  font-size: 20px;
+}
+
 .footer {
   position: fixed;
   background-color: #121c29;
   bottom: 0;
   height: 80px;
   width: 100%;
-}
-.footer span {
-  color: white;
-  font-style: italic;
 }
 
 /*# sourceMappingURL=footer_style.css.map */

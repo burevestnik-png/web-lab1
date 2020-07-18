@@ -1,5 +1,14 @@
+$neon-color: #03e9f4;
+$form-background-color: rgba(0,0,0,.5);
+
 %center-content {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+%italic-white-text {
+  color: white;
+  font-style: italic;
+  font-size: 20px;
 }

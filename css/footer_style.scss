@@ -12,7 +12,6 @@
 
 
   span {
-    color: white;
-    font-style: italic;
+    @extend %italic-white-text;
   }
 }
