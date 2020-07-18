@@ -9,7 +9,7 @@ echo "<div class=\"table\">
             <div class=\"table-header\">
                 <span>X</span>
                 <span>Y</span>
-                <span>Z</span>
+                <span>R</span>
                 <span>Current time</span>
                 <span>Execution time</span>
                 <span>Hit result</span>

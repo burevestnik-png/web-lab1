@@ -7,7 +7,8 @@ function validateReceivedData($xValue, $yValue, $rValue)
     }
 
     if (!in_array($xValue, array(-4, -3, -2, -1, 0, 1, 2, 3, 4)) ||
-        ($yValue < -3 || $yValue > 3) || ($rValue < 1 || $rValue > 4)) {
+        !in_array($rValue, array(1, 2, 3, 4, 5)) ||
+        ($yValue < -3 || $yValue > 3)) {
         return false;
     }
 
@@ -16,15 +17,19 @@ function validateReceivedData($xValue, $yValue, $rValue)
 
 function checkHit($xValue, $yValue, $rValue)
 {
-    if ((($xValue >= 0 || $xValue <= $rValue) && ($yValue >= 0 || $yValue <= $rValue/2)) ||
-        (($xValue <= 0 && $yValue >= 0) && (($xValue * $xValue + $yValue * $yValue) <= ($rValue * $rValue / 4))) ||
-        (((0 - $xValue) * (- $rValue - 0) - (0 - 0) * (0 - $yValue)) >= 0) &&
-        (((0 - $xValue) * (0 + $yValue) - (- $rValue/2 - 0) * (-$rValue - $yValue)) >= 0) &&
-        (((- $rValue / 2 - $xValue) * (0 - 0) - (0 + $rValue / 2) * (0 - $yValue)) >= 0)) {
+    if (($xValue >= - $rValue / 2 && $xValue <= 0) && ($yValue >= 0 && $yValue <= $rValue)) {
         return "<span style='color: green'>True</span>";
-    } else {
-        return "<span style='color: red'>False</span>";
     }
+
+    if (($xValue >= 0 && $xValue <= $rValue) && ($yValue >= 0 && $yValue <= ($rValue - $xValue))) {
+        return "<span style='color: green'>True</span>";
+    }
+
+    if ($xValue <= 0 && $yValue <= 0 && sqrt($xValue ** 2 + $yValue ** 2) < $rValue / 2) {
+        return "<span style='color: green'>True</span>";
+    }
+
+    return "<span style='color: red'>False</span>";
 }
 
 date_default_timezone_set('Europe/Moscow');
@@ -64,7 +69,7 @@ echo "<div class=\"table\">
             <div class=\"table-header\">
                 <span>X</span>
                 <span>Y</span>
-                <span>Z</span>
+                <span>R</span>
                 <span>Current time</span>
                 <span>Execution time</span>
                 <span>Hit result</span>
