@@ -15,3 +15,7 @@
 /node_modules/jquery/dist/jquery.slim.min.js
 /node_modules/jquery/dist/jquery.slim.min.map
 /node_modules/jquery/dist/jquery.js
+
+/.idea
+package.json
+package-lock.json
