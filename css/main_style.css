@@ -1,4 +1,4 @@
-.user-input-section {
+.user-input-section .data-form .error-group, .user-input-section .data-form .form-button-group, .user-input-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,6 +89,18 @@ body {
   color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+}
+.user-input-section .data-form .form-button-group {
+  margin-top: 50px;
+}
+.user-input-section .data-form .form-button-group a:first-child {
+  margin-right: 30px;
+}
+.user-input-section .data-form .error-group {
+  margin: 20px auto auto;
+}
+.user-input-section .data-form .error-group label {
+  color: red;
 }
 
 .y-value-label {

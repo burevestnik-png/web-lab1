@@ -106,6 +106,24 @@ body {
         }
       }
     }
+
+    .form-button-group {
+      @extend %center-content;
+      margin-top: 50px;
+
+      a:first-child {
+        margin-right: 30px;
+      }
+    }
+
+    .error-group {
+      @extend %center-content;
+      margin: 20px auto auto;
+
+      label {
+        color: red;
+      }
+    }
   }
 }
 
