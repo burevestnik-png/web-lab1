@@ -1,16 +1,18 @@
+import $ from 'jquery';
+
 let errorLog;
 let dotTarget;
-let currentRValue;
-let currentYValue;
-let currentXValue;
-let relativeUnit = 0;
+let currentRValue: number;
+let currentYValue: number;
+let currentXValue: number;
+let relativeUnit: number = 0;
 
 const FIELD_Y_MUST_BE_NUMBER = "The field Y must be number";
 const Y_VALUE_VALIDATE_ERROR = "Y value should be from -3 to 3";
 const X_MUST_BE_CHOSEN = "Value X must be chosen";
 const R_MUST_BE_CHOSEN = "Value R must be chosen";
 
-function validateYValue(yValue) {
+function validateYValue(yValue: string): boolean {
     console.log(`Validating: y = ${yValue}`);
 
     if (isNaN(Number(yValue))) {
@@ -26,8 +28,16 @@ function validateYValue(yValue) {
     return true;
 }
 
-function getY() {
-    let yValue = $('#y-value').val();
+function getX(): string {
+    return <string> $('input[name="x-group"]:checked').val();
+}
+
+function getR() : string {
+    return <string> $('input[name="r-group"]:checked').val();
+}
+
+function getY() : string {
+    let yValue = <string> $('#y-value').val();
 
     if (yValue === "") {
         yValue = "emptyString";
@@ -36,7 +46,7 @@ function getY() {
     return checkDouble(yValue);
 }
 
-function checkDouble( value ) {
+function checkDouble( value: string ) : string {
     if (value.toString().includes(",")) {
         return value.replace(",", ".");
     } else {
@@ -44,11 +54,11 @@ function checkDouble( value ) {
     }
 }
 
-function calculateX(xValue) {
+function calculateX(xValue : number) : number {
     return 150 + relativeUnit * xValue;
 }
 
-function calculateY(yValue) {
+function calculateY(yValue : number) : number {
     return 150 - relativeUnit * yValue;
 }
 
@@ -59,7 +69,7 @@ $(document).ready(function () {
     $("input[type=radio][name=\"x-group\"]").on('click',function () {
         errorLog.text("");
 
-        currentXValue = $(this).val();
+        currentXValue = Number(<string> $(this).val());
 
         if (currentRValue === undefined || currentYValue === undefined) {
             return;
@@ -69,13 +79,13 @@ $(document).ready(function () {
 
         dotTarget.attr("r", 3);
         dotTarget.attr("cy", calculateY(currentYValue));
-        dotTarget.attr("cx", calculateX($(this).val()));
+        dotTarget.attr("cx", calculateX(Number(<string> $(this).val())));
     });
 
     $('input[type=radio][name="r-group"]').on('click',function () {
         errorLog.text("");
 
-        currentRValue = $(this).val();
+        currentRValue = Number(<string>$(this).val());
 
         if (currentXValue === undefined || currentYValue === undefined) {
             return;
@@ -96,7 +106,7 @@ $(document).ready(function () {
             return;
         }
 
-        currentYValue = getY();
+        currentYValue = Number(getY());
 
         if (currentRValue === undefined) {
             return;
@@ -112,9 +122,9 @@ $(document).ready(function () {
     $("#submit-button").on('click', function () {
         errorLog.text("");
 
-        let xValue = $('input[name="x-group"]:checked').val();
+        let xValue = getX();
         let yValue = checkDouble(getY());
-        let rValue = $('input[name="r-group"]:checked').val();
+        let rValue = getR();
 
         if (xValue === undefined) {
             errorLog.text(X_MUST_BE_CHOSEN);
@@ -137,8 +147,9 @@ $(document).ready(function () {
         request.append('yValue', yValue);
         request.append('rValue', rValue);
 
-        fetch('php/server.php', {
+        fetch('server', {
             method: 'POST',
+            headers: {"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"},
             body: request
         })
             .then(response => response.text())
@@ -171,6 +182,7 @@ $(document).ready(function () {
         }
     });
 
+    // todo not support
     $('#clean-table-button').click(function () {
         fetch('php/cleanTable.php', {
             method: 'POST'
@@ -181,4 +193,4 @@ $(document).ready(function () {
                 $('.table-section').html(data);
             });
     });
-});
+})

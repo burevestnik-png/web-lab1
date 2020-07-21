@@ -11,5 +11,8 @@
     "normalize.css": "*"
   },
   "author": "Yarki",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jquery": "^3.5.0"
+  }
 }
