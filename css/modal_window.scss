@@ -1,7 +1,10 @@
+@import "utility_styles";
+
 .modal_info {
   padding: 50px 100px;
   text-align: center;
-  background-color: black;
+  background-color: rgba(0,0,0,.9);;
+  border-radius: 10px;
 
   > h1 {
     color: white;
@@ -19,20 +22,6 @@
   position: absolute;
   z-index: 1100;
   transition: opacity 600ms linear 600ms;
-}
-
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  overflow: auto;
-  position: fixed;
-  right: 0;
-  top: 0;
-  visibility: hidden;
-  z-index: 900;
-  transition: opacity 200ms linear;
 }
 
 .display {

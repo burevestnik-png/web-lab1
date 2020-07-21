@@ -1,5 +1,3 @@
-let errorLog;
-let dotTarget;
 let currentRValue;
 let currentYValue;
 let currentXValue;
@@ -63,8 +61,10 @@ function calculateY(yValue) {
 }
 
 $(document).ready(function () {
-    errorLog = $('#error-text');
-    dotTarget = $('#target-dot');
+    const errorLog = $('#error-text');
+    const dotTarget = $('#target-dot');
+    const content = $('.modal_info').detach();
+    const svgPoint = document.querySelector('svg').createSVGPoint();
 
     $("input[type=radio][name=\"x-group\"]").on('click',function () {
         errorLog.text("");
@@ -194,14 +194,14 @@ $(document).ready(function () {
 
     const modalWindow = (function () {
         let closeButton = $('<button role="button" class="modal_close" title="Close"><span></span></button>');
-        let content = $('<div class="modal_content"/>');
+        let $content = $('<div class="modal_content"/>');
         let modal = $('<div class="modal"/>');
         let $window = $(window);
 
-        modal.append(content, closeButton);
+        modal.append($content, closeButton);
 
         closeButton.on('click', function (event) {
-            $('.modal, .modal_overlay')
+            $('.modal') //, .modal_overlay
                 .addClass('conceal')
                 .removeClass('display');
             $('.open_button').removeClass('load');
@@ -219,7 +219,7 @@ $(document).ready(function () {
                 })
             },
             open: function (settings) {
-                content.empty().append(settings.content);
+                $content.empty().append(settings.content);
 
                 modal.css({
                     width: settings.width || 'auto',
@@ -229,37 +229,38 @@ $(document).ready(function () {
                 modalWindow.center();
                 $(window).on('resize', modal.center);
             },
-            close: function(){
-                content.empty();
+            close: function() {
+                $content.empty();
                 modal.detach();
                 $(window).off('resize', modal.center);
             }
         };
     }());
 
-    const content = $('.modal_info').detach();
-    let svgPoint = document.querySelector('svg').createSVGPoint();
     $('svg').on('click', function (event) {
         svgPoint.x = event.clientX;
-
         svgPoint.y = event.clientY;
         let cursorPoint = svgPoint.matrixTransform(document.querySelector('svg').getScreenCTM().inverse());
-
         console.log("(" + cursorPoint.x + ", " + cursorPoint.y + ")");
 
-        //currentRValue = getR();
-       // relativeUnit = 100 / currentRValue;
-       //  if (currentRValue === undefined) {
-            modalWindow.open({
-                content: content,
-                width: 540,
-                height: 270
-            })
-            content.addClass('modal_content');
-            $('.modal, .modal_overlay').addClass('display');
-            // $('.modal').addClass('display');
-            $('.open_button').addClass('load');
-        // }
-
+        currentRValue = getR();
+        if (currentRValue === undefined) {
+            showModalWindow("Oops", "It seems that you hadn't chosen R value");
+            return;
+        }
     })
+
+    const showModalWindow = (h1String, pString) => {
+        modalWindow.open({
+            content: content,
+            width: 540,
+            height: 270
+        })
+        content.addClass('modal_content');
+        $('.modal').addClass('display');
+        $('.open_button').addClass('load');
+
+        $('.modal_info').find("h1").html(h1String);
+        $('.modal_info').find("p").html(pString);
+    }
 });
