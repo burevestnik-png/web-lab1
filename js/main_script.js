@@ -10,6 +10,8 @@ const Y_VALUE_VALIDATE_ERROR = "Y value should be from -3 to 3";
 const X_MUST_BE_CHOSEN = "Value X must be chosen";
 const R_MUST_BE_CHOSEN = "Value R must be chosen";
 
+const Y_VALUE_GROUP_SELECTOR = ".y-value-group";
+
 function validateYValue(yValue) {
     console.log(`Validating: y = ${yValue}`);
 
@@ -34,6 +36,14 @@ function getY() {
     }
 
     return checkDouble(yValue);
+}
+
+function getX() {
+    return $('input[name="x-group"]:checked').val();
+}
+
+function getR() {
+    return $('input[name="r-group"]:checked').val();
 }
 
 function checkDouble( value ) {
@@ -112,9 +122,9 @@ $(document).ready(function () {
     $("#submit-button").on('click', function () {
         errorLog.text("");
 
-        let xValue = $('input[name="x-group"]:checked').val();
-        let yValue = checkDouble(getY());
-        let rValue = $('input[name="r-group"]:checked').val();
+        let xValue = getX();
+        let yValue = getY();
+        let rValue = getR();
 
         if (xValue === undefined) {
             errorLog.text(X_MUST_BE_CHOSEN);
@@ -160,18 +170,18 @@ $(document).ready(function () {
         currentXValue = undefined;
     });
 
-    $('.y-value-group').on('focusin', function () {
+    $(Y_VALUE_GROUP_SELECTOR).on('focusin', function () {
         $(this).find('.y-value-label').addClass('active-input');
     });
 
 
-    $('.y-value-group').on('focusout', function () {
+    $(Y_VALUE_GROUP_SELECTOR).on('focusout', function () {
         if (!$('#y-value').val()) {
             $(this).find('.y-value-label').removeClass('active-input');
         }
     });
 
-    $('#clean-table-button').click(function () {
+    $('#clean-table-button').on('click', function () {
         fetch('php/cleanTable.php', {
             method: 'POST'
         })
@@ -181,4 +191,75 @@ $(document).ready(function () {
                 $('.table-section').html(data);
             });
     });
+
+    const modalWindow = (function () {
+        let closeButton = $('<button role="button" class="modal_close" title="Close"><span></span></button>');
+        let content = $('<div class="modal_content"/>');
+        let modal = $('<div class="modal"/>');
+        let $window = $(window);
+
+        modal.append(content, closeButton);
+
+        closeButton.on('click', function (event) {
+            $('.modal, .modal_overlay')
+                .addClass('conceal')
+                .removeClass('display');
+            $('.open_button').removeClass('load');
+            event.preventDefault();
+            modalWindow.close();
+        });
+
+        return {
+            center: function () {
+                let top = Math.max($window.height() - modal.outerHeight(), 0) / 2;
+                let left = Math.max($window.width() - modal.outerWidth(), 0) / 2;
+                modal.css({
+                    top: top + $window.scrollTop(),
+                    left: left + $window.scrollLeft()
+                })
+            },
+            open: function (settings) {
+                content.empty().append(settings.content);
+
+                modal.css({
+                    width: settings.width || 'auto',
+                    height: settings.height || 'auto'
+                }).appendTo('body');
+
+                modalWindow.center();
+                $(window).on('resize', modal.center);
+            },
+            close: function(){
+                content.empty();
+                modal.detach();
+                $(window).off('resize', modal.center);
+            }
+        };
+    }());
+
+    const content = $('.modal_info').detach();
+    let svgPoint = document.querySelector('svg').createSVGPoint();
+    $('svg').on('click', function (event) {
+        svgPoint.x = event.clientX;
+
+        svgPoint.y = event.clientY;
+        let cursorPoint = svgPoint.matrixTransform(document.querySelector('svg').getScreenCTM().inverse());
+
+        console.log("(" + cursorPoint.x + ", " + cursorPoint.y + ")");
+
+        //currentRValue = getR();
+       // relativeUnit = 100 / currentRValue;
+       //  if (currentRValue === undefined) {
+            modalWindow.open({
+                content: content,
+                width: 540,
+                height: 270
+            })
+            content.addClass('modal_content');
+            $('.modal, .modal_overlay').addClass('display');
+            // $('.modal').addClass('display');
+            $('.open_button').addClass('load');
+        // }
+
+    })
 });

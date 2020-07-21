@@ -12,6 +12,7 @@
     <link href="css/main_style.css" rel="stylesheet">
     <link href="css/table_button_group_style.css" rel="stylesheet">
     <link href="css/table_style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/modal_window.css">
     <title>Yarki Project</title>
 </head>
 
@@ -86,7 +87,16 @@
             <circle cx="150" cy="150" id="target-dot" r="0" stroke="white" fill="white"/>
         </svg>
 
-        <div>
+        <div class="modal_info">
+            <h1>Kek</h1>
+            <p>It may not look like much, but it still does exactly what it says straight out of the box.</p>
+        </div>
+
+        <div class="modal_overlay">
+
+        </div>
+
+        <div class="form">
             <form class="data-form">
                 <div class="y-value-group">
                     <input id="y-value" type="text" autocomplete="off">
@@ -239,10 +249,7 @@
     </span>
 </footer>
 
-<!--<script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="js/main_script.js"></script>-->
-
-<script src="./build/main_script.js"></script>
-
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="js/main_script.js"></script>
 </body>
 </html>

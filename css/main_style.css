@@ -24,7 +24,7 @@ body {
 .user-input-section svg {
   margin-right: 40px;
 }
-.user-input-section > div {
+.user-input-section .form {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 40px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
