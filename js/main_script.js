@@ -1,6 +1,7 @@
 let currentRValue;
 let currentYValue;
 let currentXValue;
+let errorLog;
 let relativeUnit = 0;
 
 const FIELD_Y_MUST_BE_NUMBER = "The field Y must be number";
@@ -61,7 +62,7 @@ function calculateY(yValue) {
 }
 
 $(document).ready(function () {
-    const errorLog = $('#error-text');
+    errorLog = $('#error-text');
     const dotTarget = $('#target-dot');
     const content = $('.modal_info').detach();
     const svgPoint = document.querySelector('svg').createSVGPoint();
@@ -248,6 +249,31 @@ $(document).ready(function () {
             showModalWindow("Oops", "It seems that you hadn't chosen R value");
             return;
         }
+
+        relativeUnit = 100 / currentRValue;
+
+        dotTarget.attr("r", 3);
+        dotTarget.attr("cy", cursorPoint.y);
+        dotTarget.attr("cx", cursorPoint.x);
+
+        let y = (150 - cursorPoint.y) / relativeUnit;
+        let x = (cursorPoint.x - 150) / relativeUnit;
+        console.log(`${x} - x; ${y} - y`)
+
+        let request = new FormData();
+        request.append('xValue', x.toString());
+        request.append('yValue', y.toString());
+        request.append('rValue', currentRValue);
+
+        fetch('php/server.php', {
+            method: 'POST',
+            body: request
+        })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                $('.table-section').html(data);
+            });
     })
 
     const showModalWindow = (h1String, pString) => {

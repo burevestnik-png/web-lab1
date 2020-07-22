@@ -2,11 +2,11 @@
 
 function validateReceivedData($xValue, $yValue, $rValue)
 {
-    if (!is_double($rValue) || !is_double($yValue) || !is_int($xValue)) {
+    if (!is_double($rValue) || !is_double($yValue) || !is_double($xValue)) {
         return false;
     }
 
-    if (!in_array($xValue, array(-4, -3, -2, -1, 0, 1, 2, 3, 4)) ||
+    if (($xValue < -4 || $xValue > 4) ||
         !in_array($rValue, array(1, 2, 3, 4, 5)) ||
         ($yValue < -3 || $yValue > 3)) {
         return false;
@@ -39,7 +39,7 @@ session_start();
 $startScriptTime = microtime(true);
 
 $yValue = (double) $_POST["yValue"];
-$xValue = (int) $_POST["xValue"];
+$xValue = (double) $_POST["xValue"];
 $rValue = (double) $_POST["rValue"];
 
 if (!validateReceivedData($xValue, $yValue, $rValue)) {
