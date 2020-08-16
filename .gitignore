@@ -1,21 +1,4 @@
 # Project exclude paths
-/node_modules/normalize.css/CHANGELOG.md
-/node_modules/normalize.css/LICENSE.md
-/node_modules/normalize.css/package.json
-/node_modules/normalize.css/README.md
-/node_modules/jquery/external/
-/node_modules/jquery/src/
-/node_modules/jquery/AUTHORS.txt
-/node_modules/jquery/bower.json
-/node_modules/jquery/LICENSE.txt
-/node_modules/jquery/package.json
-/node_modules/jquery/README.md
-/node_modules/jquery/dist/jquery.min.map
-/node_modules/jquery/dist/jquery.slim.js
-/node_modules/jquery/dist/jquery.slim.min.js
-/node_modules/jquery/dist/jquery.slim.min.map
-/node_modules/jquery/dist/jquery.js
-
-/.idea
-package.json
-package-lock.json
+/node_modules/
+/.idea/
+/build/
