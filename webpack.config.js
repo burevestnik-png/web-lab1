@@ -76,12 +76,13 @@ module.exports = {
     ],
     resolve: {
         alias: {
-            '@styles': path.resolve(__dirname, 'src/styles')
+            '@styles': path.resolve(__dirname, 'src/styles'),
+            '@utils': path.resolve(__dirname, 'src/utils'),
         }
     },
     optimization: createOptimization(),
     devServer: {
-        port: 4200,
+        port: 4300,
         hot: isDevelopmentMode
     },
     module: {
