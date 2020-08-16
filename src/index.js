@@ -1,3 +1,6 @@
+import * as $ from 'jquery';
+import '@styles/main_style.scss';
+
 let currentRValue;
 let currentYValue;
 let currentXValue;
@@ -66,6 +69,8 @@ $(document).ready(function () {
     const dotTarget = $('#target-dot');
     const content = $('.modal_info').detach();
     const svgPoint = document.querySelector('svg').createSVGPoint();
+
+    console.log(IS_DEV_MODE)
 
     $("input[type=radio][name=\"x-group\"]").on('click',function () {
         errorLog.text("");
@@ -142,6 +147,8 @@ $(document).ready(function () {
         if (!validateYValue(yValue)) {
             return;
         }
+
+
 
         let request = new FormData();
         request.append('xValue', xValue);
