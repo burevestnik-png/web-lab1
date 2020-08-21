@@ -69,17 +69,17 @@ module.exports = {
                     to: path.resolve(__dirname, 'build/server/')
                 }
             ]
-        }),
-        new webpack.DefinePlugin({
-            IS_DEV_MODE: JSON.stringify(isDevelopmentMode)
         })
     ],
     resolve: {
+        extensions: ['.js', '.ts', '.scss', '.json'],
         alias: {
+            '@services': path.resolve(__dirname, 'src/services'),
             '@styles': path.resolve(__dirname, 'src/styles'),
             '@utils': path.resolve(__dirname, 'src/utils'),
         }
     },
+    devtool: isDevelopmentMode ? 'source-map' : '',
     optimization: createOptimization(),
     devServer: {
         port: 4300,
@@ -100,6 +100,19 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
+            },
+            {
+                test: /\.ts$/,
+                exclude: /node_modules/,
+                loader: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-typescript'
+                        ]
+                    }
+                }
             }
         ]
     }
