@@ -31,7 +31,7 @@ export default class ValidationService {
         return isNaN(value) ? ErrorLogs.R_MUST_BE_CHOSEN : ""
     }
 
-    private checkY( value: string ): string {
+    checkY( value: string ): string {
         if (!Number(value)) {
             return ErrorLogs.FIELD_Y_MUST_BE_NUMBER
         }

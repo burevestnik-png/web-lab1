@@ -1,89 +1,8 @@
 import * as $ from 'jquery';
 
-let currentRValue;
-let currentYValue;
-let currentXValue;
-let errorLog;
-let relativeUnit = 0;
-
-const Y_VALUE_GROUP_SELECTOR = ".y-value-group";
-
-function calculateX(xValue) {
-    return 150 + relativeUnit * xValue;
-}
-
-function calculateY(yValue) {
-    return 150 - relativeUnit * yValue;
-}
-
 export const start = (config) => {
-    const dotTarget = $('#target-dot');
     const content = $('.modal_info').detach();
     const svgPoint = document.querySelector('svg').createSVGPoint();
-
-    $("input[type=radio][name=\"x-group\"]").on('click',function () {
-        errorLog.text("");
-
-        currentXValue = $(this).val();
-
-        if (currentRValue === undefined || currentYValue === undefined) {
-            return;
-        }
-
-        relativeUnit = 100 / currentRValue;
-
-        dotTarget.attr("r", 3);
-        dotTarget.attr("cy", calculateY(currentYValue));
-        dotTarget.attr("cx", calculateX($(this).val()));
-    });
-
-    $('input[type=radio][name="r-group"]').on('click',function () {
-        errorLog.text("");
-
-        currentRValue = $(this).val();
-
-        if (currentXValue === undefined || currentYValue === undefined) {
-            return;
-        }
-
-        relativeUnit = 100 / currentRValue;
-
-        dotTarget.attr("r", 3);
-        dotTarget.attr("cy", calculateY(currentYValue));
-        dotTarget.attr("cx", calculateX(currentXValue));
-    });
-
-    $('#y-value').change(function () {
-        errorLog.text("");
-
-        if (!validateYValue(getY())) {
-            dotTarget.attr("r", 0);
-            return;
-        }
-
-        currentYValue = getY();
-
-        if (currentRValue === undefined) {
-            return;
-        }
-
-        relativeUnit = 100 / currentRValue;
-
-        dotTarget.attr("r", 3);
-        dotTarget.attr("cy", calculateY(currentYValue));
-        dotTarget.attr("cx", calculateX(currentXValue));
-    });
-
-    $('#clean-table-button').on('click', function () {
-        fetch(`${config.get('SERVER_PATH')}cleanTable.php`, {
-            method: 'POST'
-        })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
-                $('.table-section').html(data);
-            });
-    });
 
     const modalWindow = (function () {
         let closeButton = $('<button role="button" class="modal_close" title="Close"><span></span></button>');

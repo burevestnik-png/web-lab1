@@ -127,9 +127,12 @@ body {
     .error-group {
       @extend %center-content;
       margin: 20px auto auto;
+      display: flex;
+      flex-direction: column;
 
       label {
         color: red;
+        margin-bottom: 5px;
       }
     }
   }
