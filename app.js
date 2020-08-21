@@ -6,11 +6,6 @@ let currentXValue;
 let errorLog;
 let relativeUnit = 0;
 
-const FIELD_Y_MUST_BE_NUMBER = "The field Y must be number";
-const Y_VALUE_VALIDATE_ERROR = "Y value should be from -3 to 3";
-const X_MUST_BE_CHOSEN = "Value X must be chosen";
-const R_MUST_BE_CHOSEN = "Value R must be chosen";
-
 const Y_VALUE_GROUP_SELECTOR = ".y-value-group";
 
 function calculateX(xValue) {
@@ -22,7 +17,6 @@ function calculateY(yValue) {
 }
 
 export const start = (config) => {
-    errorLog = $('#error-text');
     const dotTarget = $('#target-dot');
     const content = $('.modal_info').detach();
     const svgPoint = document.querySelector('svg').createSVGPoint();
@@ -78,70 +72,6 @@ export const start = (config) => {
         dotTarget.attr("r", 3);
         dotTarget.attr("cy", calculateY(currentYValue));
         dotTarget.attr("cx", calculateX(currentXValue));
-    });
-
-    $("#submit-button").on('click', function () {
-        errorLog.text("");
-
-        let xValue = getX();
-        let yValue = getY();
-        let rValue = getR();
-
-        if (xValue === undefined) {
-            errorLog.text(X_MUST_BE_CHOSEN);
-            return;
-        }
-
-        if (rValue === undefined) {
-            errorLog.text(R_MUST_BE_CHOSEN);
-            return;
-        }
-
-        console.log(`Got data: x = ${xValue}, y = ${yValue}, r = ${rValue}`);
-
-        if (!validateYValue(yValue)) {
-            return;
-        }
-
-
-
-        let request = new FormData();
-        request.append('xValue', xValue);
-        request.append('yValue', yValue);
-        request.append('rValue', rValue);
-
-        fetch(`${config.get('SERVER_PATH')}server.php`, {
-            method: 'POST',
-            body: request
-        })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
-                $('.table-section').html(data);
-            });
-    });
-
-    $('#reset-button').on('click', () => {
-        $('#y-value').val("");
-        $('.y-value-label').removeClass('active-input');
-        $('input[name="x-group"]:checked').prop('checked', false);
-        $('input[name="r-group"]:checked').prop('checked', false);
-
-        dotTarget.attr("r", 0);
-        currentYValue = undefined;
-        currentRValue = undefined;
-        currentXValue = undefined;
-    });
-
-    $(Y_VALUE_GROUP_SELECTOR).on('focusin', function () {
-        $(this).find('.y-value-label').addClass('active-input');
-    });
-
-
-    $(Y_VALUE_GROUP_SELECTOR).on('focusout', function () {
-        if (!$('#y-value').val()) {
-            $(this).find('.y-value-label').removeClass('active-input');
-        }
     });
 
     $('#clean-table-button').on('click', function () {
