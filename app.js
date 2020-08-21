@@ -13,48 +13,6 @@ const R_MUST_BE_CHOSEN = "Value R must be chosen";
 
 const Y_VALUE_GROUP_SELECTOR = ".y-value-group";
 
-function validateYValue(yValue) {
-    console.log(`Validating: y = ${yValue}`);
-
-    if (isNaN(Number(yValue))) {
-        errorLog.text(FIELD_Y_MUST_BE_NUMBER);
-        return false;
-    }
-
-    if (Number(yValue) < -3 || Number(yValue) > 3) {
-        errorLog.text(Y_VALUE_VALIDATE_ERROR);
-        return false;
-    }
-
-    return true;
-}
-
-function getY() {
-    let yValue = $('#y-value').val();
-
-    if (yValue === "") {
-        yValue = "emptyString";
-    }
-
-    return checkDouble(yValue);
-}
-
-function getX() {
-    return $('input[name="x-group"]:checked').val();
-}
-
-function getR() {
-    return $('input[name="r-group"]:checked').val();
-}
-
-function checkDouble( value ) {
-    if (value.toString().includes(",")) {
-        return value.replace(",", ".");
-    } else {
-        return value;
-    }
-}
-
 function calculateX(xValue) {
     return 150 + relativeUnit * xValue;
 }

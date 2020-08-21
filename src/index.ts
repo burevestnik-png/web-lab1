@@ -9,5 +9,6 @@ config.set('SERVER_PATH', 'server/');
 
 new App(
     config,
-    new DataExtractorService(new ValidationService())
+    new DataExtractorService(),
+    new ValidationService()
 ).initializeEventHandlers();
