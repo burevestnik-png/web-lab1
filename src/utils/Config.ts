@@ -1,9 +1,11 @@
 export default class Config {
-    constructor(state = {}) {
+    state: object
+
+    constructor( state = {} ) {
         this.state = state;
     }
 
-    set(key, value) {
+    set( key, value ) {
         this.state[key] = value;
     }
 

@@ -38,7 +38,7 @@ const createOptimization = () => {
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: "development",
-    entry: './index.js',
+    entry: './index.ts',
     output: {
         filename: createFileName('js', './static/js/'),
         path: path.resolve(__dirname, 'build')
