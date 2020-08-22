@@ -3,6 +3,7 @@ import GraphicsService from "@services/graphics.service";
 import ValidationService from '@services/validation.service';
 import Config from '@utils/config';
 import * as $ from 'jquery';
+import ModalWindowComponent from "@components/modal-window.component";
 
 export default class App {
     private $errorMessage;
@@ -16,6 +17,8 @@ export default class App {
     private currentYValue: number;
     private currentXValue: number;
 
+    private modalWindow: ModalWindowComponent;
+
     constructor(
         private config: Config,
         private dataExtractorService: DataExtractorService,
@@ -27,6 +30,8 @@ export default class App {
         this.$yValueGroup = $('.y-value-group')
         this.$yValueLabel = $('.y-value-label')
         this.$tableSection = $('.table-section')
+
+        this.modalWindow = new ModalWindowComponent();
     }
 
     initializeEventHandlers(): void {
