@@ -11,7 +11,9 @@
 ## About the project
 Stack of technologies:
 - JQuery
-- npm & yarn
+- npm
+- TypeScript
+- WebPack
 
 [stars-shield]: https://img.shields.io/github/stars/burevestnik-png/web-lab1?style=social
 [stars-url]: https://github.com/burevestnik-png/web-lab1/stargazers
