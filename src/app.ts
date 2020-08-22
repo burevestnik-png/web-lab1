@@ -1,9 +1,9 @@
+import ModalWindowComponent from "@components/modal-window.component";
 import DataExtractorService from '@services/data-extractor.service';
 import GraphicsService from "@services/graphics.service";
 import ValidationService from '@services/validation.service';
 import Config from '@utils/config';
 import * as $ from 'jquery';
-import ModalWindowComponent from "@components/modal-window.component";
 
 export default class App {
     private $errorMessage;
@@ -32,6 +32,12 @@ export default class App {
         this.$tableSection = $('.table-section')
 
         this.modalWindow = new ModalWindowComponent();
+
+        if (localStorage.getItem('table-data')) {
+            this.$tableSection.html(
+                localStorage.getItem('table-data')
+            )
+        }
     }
 
     initializeEventHandlers(): void {
@@ -54,6 +60,7 @@ export default class App {
                 .then(response => response.text())
                 .then(data => {
                         console.log(data);
+                        this.saveToLocalStorage(data);
                         this.$tableSection.html(data);
                     }
                 )
@@ -81,6 +88,7 @@ export default class App {
                 .then(response => response.text())
                 .then(data => {
                     console.log(data);
+                    localStorage.clear();
                     this.$tableSection.html(data);
                 });
         });
@@ -113,7 +121,7 @@ export default class App {
             this.graphicsService.changeDotPosition(this.currentXValue, this.currentYValue, this.currentRValue)
         });
 
-        $('#y-value').on('input',  () => {
+        $('#y-value').on('input', () => {
             this.clearErrorMessage();
 
             const y = this.dataExtractorService.getY();
@@ -125,6 +133,36 @@ export default class App {
             this.currentYValue = Number(y);
             this.graphicsService.changeDotPosition(this.currentXValue, this.currentYValue, this.currentRValue)
         });
+
+        $('svg').on('click', ( event ) => {
+            const clickPoint = this.graphicsService.getClickPoint(event);
+
+            this.currentRValue = this.dataExtractorService.getR();
+            if (isNaN(this.currentRValue)) {
+                this.modalWindow.show("Oops", "It seems that you hadn't chosen R value");
+                return
+            }
+
+            this.graphicsService.changeDotPosition(clickPoint.x, clickPoint.y, this.currentRValue, true)
+            $('#y-value').val('');
+            $('.y-value-label').removeClass('active-input');
+            $('input[name="x-group"]:checked').prop('checked', false);
+
+            fetch(`${ this.config.get('SERVER_PATH') }server.php`, {
+                method: 'POST',
+                body: this.formRequestFromClick(clickPoint.x, clickPoint.y, this.currentRValue)
+            })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    this.saveToLocalStorage(data);
+                    this.$tableSection.html(data);
+                });
+        })
+    }
+
+    saveToLocalStorage( data: string ) {
+        localStorage.setItem('table-data', data);
     }
 
     private formRequest( x: number,
@@ -133,6 +171,17 @@ export default class App {
         const formData = new FormData();
         formData.append('xValue', x.toString());
         formData.append('yValue', y);
+        formData.append('rValue', r.toString());
+
+        return formData;
+    }
+
+    private formRequestFromClick( x: number,
+                                  y: number,
+                                  r: number ): FormData {
+        const formData = new FormData();
+        formData.append('xValue', ((x - 150) / (100 / this.currentRValue)).toString());
+        formData.append('yValue', ((150 - y) / (100 / this.currentRValue)).toString());
         formData.append('rValue', r.toString());
 
         return formData;
