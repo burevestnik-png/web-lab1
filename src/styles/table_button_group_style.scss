@@ -1,0 +1,12 @@
+@import "utility_styles";
+
+.table-buttons {
+  background-color: $form-background-color;
+
+  @extend %center-content;
+
+  max-width: 30%;
+  margin: 40px auto auto;
+  height: 50px;
+  border-radius: 10px;
+}

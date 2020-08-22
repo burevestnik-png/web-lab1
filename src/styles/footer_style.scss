@@ -1,0 +1,17 @@
+@import "header_style";
+@import "utility_styles";
+
+.footer {
+  @extend %center-content;
+
+  position: fixed;
+  background-color: $main-color;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+
+
+  span {
+    @extend %italic-white-text;
+  }
+}
