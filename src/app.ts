@@ -53,7 +53,7 @@ export default class App {
                 return
             }
 
-            fetch(`${ this.config.get('SERVER_PATH') }server.php`, {
+            fetch(`${ this.config.get('SERVER_PATH') }hit.php`, {
                 method: 'POST',
                 body: this.formRequest(x, y, r)
             })
@@ -148,7 +148,7 @@ export default class App {
             $('.y-value-label').removeClass('active-input');
             $('input[name="x-group"]:checked').prop('checked', false);
 
-            fetch(`${ this.config.get('SERVER_PATH') }server.php`, {
+            fetch(`${ this.config.get('SERVER_PATH') }hit.php`, {
                 method: 'POST',
                 body: this.formRequestFromClick(clickPoint.x, clickPoint.y, this.currentRValue)
             })
@@ -169,9 +169,9 @@ export default class App {
                          y: string,
                          r: number ): FormData {
         const formData = new FormData();
-        formData.append('xValue', x.toString());
-        formData.append('yValue', y);
-        formData.append('rValue', r.toString());
+        formData.append('x', x.toString());
+        formData.append('y', y);
+        formData.append('r', r.toString());
 
         return formData;
     }
@@ -180,9 +180,9 @@ export default class App {
                                   y: number,
                                   r: number ): FormData {
         const formData = new FormData();
-        formData.append('xValue', ((x - 150) / (100 / this.currentRValue)).toString());
-        formData.append('yValue', ((150 - y) / (100 / this.currentRValue)).toString());
-        formData.append('rValue', r.toString());
+        formData.append('x', ((x - 150) / (100 / this.currentRValue)).toString());
+        formData.append('y', ((150 - y) / (100 / this.currentRValue)).toString());
+        formData.append('r', r.toString());
 
         return formData;
     }

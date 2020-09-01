@@ -35,7 +35,7 @@ const createOptimization = () => {
     return config
 }
 
-module.exports = {
+module.exports = {  
     context: path.resolve(__dirname, 'src'),
     mode: "development",
     entry: './index.ts',
