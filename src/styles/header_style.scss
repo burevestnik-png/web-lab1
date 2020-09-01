@@ -31,9 +31,7 @@ $main-color: #121c29;
     span {
       @extend %italic-white-text;
 
-      &:first-child {
-        margin-bottom: 10px;
-      }
+      margin-bottom: 3px;
     }
   }
 }

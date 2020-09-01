@@ -10,8 +10,16 @@
   height: 80px;
   width: 100%;
 
+  display: flex;
+  flex-direction: column;
 
   span {
     @extend %italic-white-text;
+
+    text-align: center;
+
+    &:first-child {
+      margin-bottom: 10px;
+    }
   }
 }
