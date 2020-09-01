@@ -59,7 +59,7 @@ export default class App {
             })
                 .then(response => response.text())
                 .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         this.saveToLocalStorage(data);
                         this.$tableSection.html(data);
                     }
@@ -87,7 +87,7 @@ export default class App {
             })
                 .then(response => response.text())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     localStorage.clear();
                     this.$tableSection.html(data);
                 });
@@ -154,7 +154,7 @@ export default class App {
             })
                 .then(response => response.text())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     this.saveToLocalStorage(data);
                     this.$tableSection.html(data);
                 });
@@ -180,8 +180,8 @@ export default class App {
                                   y: number,
                                   r: number ): FormData {
         const formData = new FormData();
-        formData.append('x', ((x - 150) / (100 / this.currentRValue)).toString());
-        formData.append('y', ((150 - y) / (100 / this.currentRValue)).toString());
+        formData.append('x', ((x - 150) / (100 / this.currentRValue)).toFixed(1).toString());
+        formData.append('y', ((150 - y) / (100 / this.currentRValue)).toFixed(1).toString());
         formData.append('r', r.toString());
 
         return formData;

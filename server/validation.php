@@ -1,7 +1,5 @@
 <?php
 
-const X_MIN = -4, X_MAX = 4;
-const Y_MIN = -3, Y_MAX = 3;
 const R_MIN = 1, R_MAX = 5;
 
 function isValid($x, $y, $r)
@@ -10,9 +8,7 @@ function isValid($x, $y, $r)
         return false;
     }
 
-    if ($x < X_MIN || $x > X_MAX ||
-        $y < Y_MIN || $y > Y_MAX ||
-        $r < R_MIN || $r > R_MAX) {
+    if ($r < R_MIN || $r > R_MAX) {
         return false;
     }
 

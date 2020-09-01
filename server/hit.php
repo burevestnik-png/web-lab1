@@ -9,8 +9,8 @@ session_start();
 $startScriptTime = microtime(true);
 $currentTime = date("H:i:s");
 
-$x = (double) $_POST["x"];
-$y = (double) $_POST["y"];
+$x = round((double) $_POST["x"], 2);
+$y = round((double) $_POST["y"], 2);
 $r = (double) $_POST["r"];
 
 if (!isValid($x, $y, $r)) {
@@ -23,7 +23,7 @@ $hitResult = isHit($x, $y, $r) ?
     "<span style='color: green'>True</span>" :
     "<span style='color: red'>False</span>";
 
-$scriptExecutionTime = number_format(microtime(true) - $startScriptTime, 10, ".", "") * 1000000;
+$scriptExecutionTime = number_format(microtime(true) - $startScriptTime, 8, ".", "") * 1000000;
 
 $receivedData = array(
                     $x,
