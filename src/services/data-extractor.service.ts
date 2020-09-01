@@ -26,6 +26,6 @@ export default class DataExtractorService {
             yValue = yValue.replace(",", ".")
         }
 
-        return yValue;
+        return yValue.toString();
     }
 }

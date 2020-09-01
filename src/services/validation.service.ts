@@ -32,8 +32,12 @@ export default class ValidationService {
     }
 
     checkY( value: string ): string {
+        if (value === '0') {
+            return "";
+        }
+
         if (!Number(value)) {
-            return ErrorLogs.FIELD_Y_MUST_BE_NUMBER
+            return ErrorLogs.FIELD_Y_MUST_BE_NUMBER;
         }
 
         if (Number(value) < -3 || Number(value) > 3) {
